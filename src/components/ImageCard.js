@@ -1,0 +1,37 @@
+const ImageCard = ({ image }) => {
+  const tags = image.tags.split(",");
+
+  return (
+    <div className="max-w-sm rounded overflow-hidden shadow-lg ml-auto mr-auto w-11/12 mb-3">
+      <img src={image.webformatURL} className="w-full h-80" />
+      <div className="px-7 py-4">
+        <div className="font-bold text-gray-700 mb-2">
+          photo by: {image.user}
+        </div>
+        <ul>
+          <li>
+            <strong>Views: </strong>
+            {image.views}
+          </li>
+          <li>
+            <strong>Downloads: </strong>
+            {image.downloads}
+          </li>
+          <li>
+            <strong>Likes: </strong>
+            {image.likes}
+          </li>
+        </ul>
+      </div>
+      <div className="px-7 py-4">
+        {tags.map((tag, index) => {
+          <span key={index} className="inline-block bg-gray-300 rounded-full px-3 py-1 mr-2 text-gray-800 text-sm font-semibold mt-1">
+            #{tag}
+          </span>
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default ImageCard;
